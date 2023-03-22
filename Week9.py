@@ -107,13 +107,14 @@ while True:
 
 ### Create a socket
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 for port in portList:
     try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((ipAdd, port))
         print(f"{ipAdd} at port {port} is open")
     except:
         print(f"{ipAdd} at port {port} is closed")
-    #s.close()
+    #finally:
+        #s.close()
 
