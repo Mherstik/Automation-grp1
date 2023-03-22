@@ -111,8 +111,15 @@ while True:
 for port in portList:
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        socket.setdefaulttimeout(0.5)
         s.connect((ipAdd, port))
-        print(f"{ipAdd} at port {port} is open")
+        #print(f"{ipAdd} at port {port} is open")
+        #print (s.recv(1024).decode())
+        try:
+            banner = s.recv(1024).decode()
+            print(f"port {port} is open with banner {banner}")
+        except:
+            print(f"{ipAdd} at port {port} is open ")
     except:
         print(f"{ipAdd} at port {port} is closed")
     finally:
