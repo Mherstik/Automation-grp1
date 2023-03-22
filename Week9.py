@@ -121,5 +121,4 @@ for port in portList:
         print(f"{ipAdd} at port {port} is closed")
     finally:
         s.close()
-    #s.close()
-
+    
