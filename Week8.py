@@ -6,6 +6,7 @@ Output: open ports
 Version: 0.1
 Author: Me 
 '''
+import socket
 
 ## Get an IP from a user
 # 4 numbers must be between 1-255
@@ -47,15 +48,16 @@ def getIPAddress():
         ip_address_str = input("Enter an IP address: ")
         if isValidIPAddress(ip_address_str):
             print("Valid IP address:", ip_address_str)
-            break
+            return ip_address_str
+            #break
         else:
             print("Invalid IP address")
             #ip_address_str = input("Enter an IP address: ")
-            continue
+            #continue
 
         #getIPAddress()
 
-getIPAddress()
+ipAdd = getIPAddress()
 ################
 #    
 # using module ipaddress
@@ -72,7 +74,7 @@ getIPAddress()
 #     print("Invalid IP address")
 
 #while True:
-# for each in ipAdd.split("."):
+# for each in ipAdd.split("."):ip_address_str
 #     #print(each)
 #     if each.isdigit() and int(each) >= 0 and int(each) <= 255:
 #         # break
@@ -87,18 +89,31 @@ portList = []
 # low = 1 high = 65535
 print("Give me a port number.\nPress X to exit")
 while True:
-    port = input()
+    port = input("Port: ")
     if port.lower() == "x":
         break
     elif port.isdigit():
         if int(port) > 0 and int(port) <= 65535:
-            portList.append(port)
+            portList.append(int(port))
         else:
             print("Give me a number between 1 and 65535")
     else:
         print("Give me a valid number")
+
 # print(portList)
+# for each in portList:
+#     print(type(each))
+# print(ipAdd)
 
+### Create a socket
 
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+for port in portList:
+    try:
+        s.connect((ipAdd, port))
+        print(f"{ipAdd} at port {port} is open")
+    except:
+        print(f"{ipAdd} at port {port} is closed")
+    #s.close()
 
