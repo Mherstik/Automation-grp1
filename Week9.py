@@ -115,6 +115,7 @@ for port in portList:
         print(f"{ipAdd} at port {port} is open")
     except:
         print(f"{ipAdd} at port {port} is closed")
-    #finally:
-        #s.close()
+    finally:
+        s.close()
+    #s.close()
 
