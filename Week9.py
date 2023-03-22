@@ -107,17 +107,14 @@ while True:
 
 ### Create a socket
 
-
+socket.setdefaulttimeout(1.0)
 for port in portList:
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        socket.setdefaulttimeout(0.5)
         s.connect((ipAdd, port))
-        #print(f"{ipAdd} at port {port} is open")
-        #print (s.recv(1024).decode())
         try:
             banner = s.recv(1024).decode()
-            print(f"port {port} is open with banner {banner}")
+            print(f"{ipAdd} at port {port} is open with banner: \n\t{banner}")
         except:
             print(f"{ipAdd} at port {port} is open ")
     except:
