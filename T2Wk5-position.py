@@ -19,17 +19,29 @@ j = ''
 for each in a:
     #print(string.ascii_uppercase[i], "is pos", i)
     if each == ".":
-      b.append("X")
-    position = string.ascii_uppercase.index(each)
-    newPos = position+shift
-    print(position,newPos)
-#         print(string.ascii_uppercase[i], "is pos", i)
-#         if i + shift > 25:
-#             j = i
-#             i = (i + shift) % 26
-#             print(string.ascii_uppercase[j], "is now", i, string.ascii_uppercase[i])
+        b.append("X")
+    else:
+        position = string.ascii_uppercase.index(each)
+        newPos = ((position+shift) % 26)
+        #print(position,newPos)
+    #    print(string.ascii_uppercase[i], "is pos", i)
+    #         if i + shift > 25:
+    #             j = i
+    #             i = (i + shift) % 26
+        print(string.ascii_uppercase[position], "is now", newPos, string.ascii_uppercase[newPos])
+        b.append(string.ascii_uppercase[newPos])
 #         else:
 #             print(string.ascii_uppercase[i], "is now", i+shift, string.ascii_uppercase[i+shift])
 #     #else:
 #     #    continue
+
 #     i += 1
+print(b)
+
+## Convert back to string
+str1 = ''
+for each in b:
+    str1 += each
+print(str1)
+    
+    
